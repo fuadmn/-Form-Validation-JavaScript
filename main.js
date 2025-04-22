@@ -29,6 +29,16 @@ const showSuccess = (input) => {
   }
 
 
+  const checkEmail = (email) => {
+   const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+   if(reg.test(email.value)){
+      showSuccess(email);
+   }else{
+      showError(email, 'Invalid Email');
+   }
+  }
+
 
 form.addEventListener("submit", (event) => {
 
@@ -45,6 +55,7 @@ form.addEventListener("submit", (event) => {
    event.preventDefault();
 
    checkEmpty( [username,email,password,confemPassword]);
+   checkEmail(email);
    
 })
 
