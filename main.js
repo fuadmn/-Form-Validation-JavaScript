@@ -35,10 +35,21 @@ const showSuccess = (input) => {
    if(reg.test(email.value)){
       showSuccess(email);
    }else{
-      showError(email, 'Invalid Email');
+      showError(email, 'Invalid Email'); 
    }
   }
 
+  const checkPasswordLength = (input,min,max) => {
+
+   if(input.value.length < min){
+      showError(input,`password atleast ${min} Chartcater `);
+   }else if (input.value.length > max){
+      showError(input, `password maximun charactor is ${max}`);
+   }else{
+      showSuccess(input);
+   }
+
+  }
 
 form.addEventListener("submit", (event) => {
 
@@ -56,6 +67,9 @@ form.addEventListener("submit", (event) => {
 
    checkEmpty( [username,email,password,confemPassword]);
    checkEmail(email);
+
+   checkPasswordLength(password,6,10);
+   checkPasswordLength(confemPassword,6,10);
    
-})
+});
 
