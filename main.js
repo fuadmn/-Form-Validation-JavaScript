@@ -51,6 +51,13 @@ const showSuccess = (input) => {
 
   }
 
+  const checkEmailConfirmPassword = (password,confemPassword) => {
+
+   if(password.value !== confemPassword.value){
+      showError(confemPassword,'password is Not Match');
+   }
+  }
+
 form.addEventListener("submit", (event) => {
 
    const checkEmpty = (elements) => {
@@ -70,6 +77,8 @@ form.addEventListener("submit", (event) => {
 
    checkPasswordLength(password,6,10);
    checkPasswordLength(confemPassword,6,10);
+
+   checkEmailConfirmPassword(password,confemPassword);
    
 });
 
